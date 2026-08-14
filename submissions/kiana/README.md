@@ -27,7 +27,7 @@ The project covers data quality assessment, missing value handling, duplicate de
 
 ## Project Structure
 
-- `customer_data_cleaning_and_analysis.ipynb` — Main data cleaning and analysis notebook
+- `Project01_Data_Cleaning(1).ipynb` — Main data cleaning and analysis notebook
 - `README.md` — Project documentation
 
 ## How to Run
