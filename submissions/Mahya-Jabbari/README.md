@@ -8,7 +8,7 @@ In the `total_spending` column, one missing value (NaN) and one value inconsiste
 
 ### Data Consistency Checks
 
-Several values in the `gender` column were inconsistent with the gender associated with the corresponding names. To validate these values, the names in the dataset were compared with a reference dataset containing Iranian names and their associated genders. The records whose recorded gender differed from the reference were identified and corrected.
+Several values in the `gender` column were inconsistent with the gender associated with the corresponding names. To validate these values, the names in the dataset were compared with a reference dataset containing Iranian names and their associated genders. The records whose recorded gender differed from the reference were identified and corrected. Names that were not available in the reference dataset, such as Kimia, could not be automatically validated, so Kimia records were manually reviewed and their gender values were corrected to `f`.
 
 Initially, records where `purchase_count` was equal to zero while `returned_items` was greater than zero appeared to be inconsistent. However, after further investigation, it was determined that returned items were not included in the final purchase count. Therefore, cases such as `purchase_count = 0` and `returned_items > 0` were considered logically valid and were not treated as errors.
 
