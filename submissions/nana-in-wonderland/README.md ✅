@@ -1,0 +1,154 @@
+# Project 01: Data Cleaning on a Real E-commerce Dataset
+
+## Overview
+
+This project focuses on cleaning a customer transaction dataset. The workflow begins with identifying and correcting common data quality issues before analysing customer behaviour and business performance through aggregation and statistical summaries.
+
+---
+
+# Tools and Libraries
+
+The following libraries were used throughout the project:
+
+* **Pandas** for loading, cleaning, transforming, grouping, and analysing the dataset.
+* **Seaborn** for visualising data distributions and detecting outliers.
+* **Matplotlib** for displaying and customising plots.
+
+---
+
+# Data Cleaning
+
+The dataset was cleaned before any analysis was performed to ensure that the results were based on reliable and consistent data.
+
+### Handling Missing Values
+
+Rows containing missing values were removed using the `dropna()` method.
+
+This approach was chosen because incomplete records may lead to inaccurate statistics or unreliable analytical results. Removing these rows ensured that all remaining observations contained complete information.
+
+---
+
+### Removing Duplicate Records
+
+Duplicate rows were first identified using the `duplicated()` method and then removed using `drop_duplicates()`.
+
+Duplicate observations can artificially increase frequencies and aggregated values such as total spending. Removing them prevents duplicated information from affecting the final analysis.
+
+---
+
+### Correcting Inconsistent Gender Values
+
+The `gender` column contained incorrect values for several customers.
+
+Since the dataset was relatively small and the correct gender for each customer was known, a Python dictionary was created and applied using the `map()` function to replace incorrect values with the correct ones.
+
+This approach guarantees consistent categorical values without modifying other columns.
+
+---
+
+### Detecting and Removing Outliers
+
+Customer ages were visualised using a Seaborn boxplot.
+
+The boxplot provides a quick visual method for identifying observations that lie outside the normal distribution.
+
+After detecting potential outliers, an Interquartile Range (IQR)-based calculation was used to determine the upper and lower limits. Records falling outside these limits were extracted and removed from the dataset.
+
+Removing extreme values reduces their influence on statistical summaries and produces more representative analytical results.
+
+---
+
+### Resetting the Index
+
+After removing duplicate records and outliers, the dataset contained non-sequential row indices.
+
+The `reset_index(drop=True)` method was used to generate a new continuous index, producing a cleaner and more organised dataset for the following analysis.
+
+---
+
+# Exploratory Data Analysis
+
+After the cleaning process was completed, several business questions were answered using aggregation and sorting techniques.
+
+### Top Customers
+
+Customers were sorted according to their `total_spending` in descending order to identify the highest-value customers.
+
+---
+
+### City Analysis
+
+The dataset was grouped by `city`, and the total spending of customers in each city was calculated.
+
+This analysis identifies the cities that generate the highest revenue.
+
+---
+
+### Payment Method Analysis
+
+Customers were grouped by `payment_method`, and the total purchase count was calculated.
+
+This shows which payment methods are used most frequently.
+
+---
+
+### Device Analysis
+
+The dataset was grouped by `device`, and total spending was calculated for each device category.
+
+This comparison helps determine which devices contribute the highest sales.
+
+---
+
+### Discount and Satisfaction Analysis
+
+Two analyses were performed for customers who used and did not use discounts.
+
+The first compares purchase frequency using the `purchase_count` column.
+
+The second compares the total satisfaction score, allowing a comparison between discount usage and customer satisfaction.
+
+---
+
+### Monthly Sales Analysis
+
+The `signup_date` column was converted to the datetime data type using `pd.to_datetime()`.
+
+The month name was extracted from each date, and the dataset was grouped by month to calculate the total spending for each month.
+
+Finally, the monthly spending values were sorted in descending order to identify the periods with the highest sales.
+
+---
+
+# Statistical Summary
+
+The project concludes with the `describe()` method.
+
+This method generates descriptive statistics for all numerical columns, including:
+
+* Count
+* Mean
+* Standard deviation
+* Minimum
+* Maximum
+* 25th percentile
+* Median (50th percentile)
+* 75th percentile
+
+These statistics provide a general overview of the cleaned dataset and make it easier to identify the central tendency, spread, and overall characteristics of each numerical feature.
+
+---
+
+# Final Dataset
+
+Compared with the original dataset, the final dataset contains:
+
+* Missing records removed.
+* Duplicate observations removed.
+* Incorrect gender values corrected.
+* Age outliers removed.
+* Date values converted into datetime format for time-based analysis.
+* A clean and consistent dataset suitable for exploratory data analysis.
+* Business insights generated through grouping, aggregation, sorting, and descriptive statistics.
+
+The final version of the dataset is more consistent, easier to analyse, and produces more reliable analytical results than the original raw dataset.
